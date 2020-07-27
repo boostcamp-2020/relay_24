@@ -64,5 +64,5 @@
 * 2009년 4월 22일 서비스 종료
 
 
-![image (1)](https://user-images.githubusercontent.com/50410213/88498867-49345d00-cfff-11ea-92a6-da0086c25cf8.png)
-![image (2)](https://user-images.githubusercontent.com/50410213/88498871-4b96b700-cfff-11ea-99a3-4c6e084991fc.png)
+![image (1)](https://user-images.githubusercontent.com/50410213/88498867-49345d00-cfff-11ea-92a6-da0086c25cf8.png =400x)
+![image (2)](https://user-images.githubusercontent.com/50410213/88498871-4b96b700-cfff-11ea-99a3-4c6e084991fc.png =400x)
