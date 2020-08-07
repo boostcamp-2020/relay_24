@@ -13,12 +13,23 @@ body {
     background-color: black;
 }
 
+.노치 {
+    width: 160px;
+    height: 20px;
+    background-color: black;
+    border-radius: 0px 0px 10px 10px;
+    position: absolute;
+    left: 130px;
+    top: -9px
+}
+
 .room_name {
     text-align: center;
     background-color: grey;
     padding: 10px 0px;
     border-radius: 10px 10px 0px 0px;
     border: 1px solid black;
+    position: relative;
 }
 
 .chat {
