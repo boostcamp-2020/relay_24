@@ -1,18 +1,4 @@
-/* <div class="a-chat other-chat">
-            <div class="pic">
-                <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="profile picture">
-                <p class="chat-user">user name</p>
-            </div>
-            <div class="chat-text">
-                안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요
-            </div>
-        </div>
 
-        <div class="a-chat my-chat">
-            <div class="chat-text">
-                안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요
-            </div>
-        </div> */
 
 const IMAGE_SRC =
   "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260";
@@ -128,29 +114,40 @@ const httpGet = theUrl => {
   return xmlHttp.responseText;
 };
 
+const getPic = (id) => new Promise((resolve, reject) => {
+  fetch("http://localhost/api/pic/" + String(id))
+  .then(res => res.json())
+  .then(picjson => {
+    console.log(picjson);
+    resolve(picjson.data[0].image)
+  });
+})
+
 window.onload = () => {
   fetch("http://localhost/api/chat")
     .then(res => res.json())
     .then(chats => {
       console.log(chats);
-      chats.forEach(data => {
+      chats.data.forEach(async data => {
+
+        let picURL = await getPic(data.id)
         // 자신의 id === 1 일 때
         if (data.id !== 1) {
-          receiveChat(data.img, data.username, data.chat, data.mind);
+          receiveChat(picURL, data.name, data.chat, data.mind);
         } else {
           sendChat(data.chat, data.mind);
         }
       });
     });
 
-  datas.forEach(data => {
-    // 자신의 id === 1 일 때
-    if (data.id !== 1) {
-      receiveChat(IMAGE_SRC, data.username, data.chat, data.mind);
-    } else {
-      sendChat(data.chat, data.mind);
-    }
-  });
+  // datas.forEach(data => {
+  //   // 자신의 id === 1 일 때
+  //   if (data.id !== 1) {
+  //     receiveChat(IMAGE_SRC, data.username, data.chat, data.mind);
+  //   } else {
+  //     sendChat(data.chat, data.mind);
+  //   }
+  // });
 
   document.getElementById("send").addEventListener("click", () => {
     sendChat();
